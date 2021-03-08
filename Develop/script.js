@@ -6,7 +6,7 @@ $(document).ready(() => {
 
   $("#currentDay").text(date);
 
-  $("#timeblock").append($("<div id ='timeCard' class = 'card-section'>"));
+  $("#timeblock").append($("<div>").addClass("cardbody").text("Hi"));
 //   .attr({id:"timeCard", class":"card-section"}));
   // eslint-disable-next-line no-unused-vars
   const workhours = 9;
