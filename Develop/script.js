@@ -1,19 +1,37 @@
 $(document).ready(() => {
-  // const moment = require("moment");
+
   // Create "current date" format
   const date = moment().format("MM-DD-YYYY");
   console.log(date);
+
+  //Display current date
   $("#currentDay").text(date);
   
-  // 
-  // var todo = [];
-  // var workhours = 9;
-  // $(".save-btn").click(function(){
-  //   for(i = 0; i < workhours; i++) {
-  //     todo.append($(this).val());
-  //   console.log(todo); 
-  //   }
-  // })
+  //Grab the data from localStorage
+  var workday = JSON.parse(localStorage.getItem("workday"));
+  console.log(workday);
+
+  //Display localStorage data to 
+  $("#input8").attr("placeholder", workday[0]);
+  $("#input9").attr("placeholder", workday[1]);
+  $("#input10").attr("placeholder", workday[2]);
+  $("#input11").attr("placeholder", workday[3]);
+  $("#input12").attr("placeholder", workday[4]);
+  $("#input1").attr("placeholder", workday[5]);
+  $("#input2").attr("placeholder", workday[6]);
+  $("#input3").attr("placeholder", workday[7]);
+  $("#input4").attr("placeholder", workday[8]);
+  $("#input5").attr("placeholder", workday[9]);
+  function colorcord(timevar){
+    for (i=0; i<workday; i++) {
+      if (timevar[i].val() == time){
+        i.addClass("present")
+      else if 
+      };
+    };
+  };
+
+  //Save each hour's "to-do" per save event
   $(".btn").click( function(){
     var input8 = $("#input8").val();
     var input9 = $("#input9").val();
@@ -26,23 +44,13 @@ $(document).ready(() => {
     var input4 = $("#input4").val();
     var input5 = $("#input5").val();
 
+    //store all each to-do var in obj
     var workday = [input8, input9, input10, input11, input12,
     input1, input2, input3, input4, input5];
 
+    //save data to localStorage
     localStorage.setItem("workday", JSON.stringify(workday));
-  })
-
-  console.log(localStorage);
+  });
 
 
-
-//   $("#timeblock").append($("<div>").addClass("cardbody").text("Hi"));
-//   .attr({id:"timeCard", class":"card-section"}));
-  // eslint-disable-next-line no-unused-vars
-  
-//   displayTime() => {
-//     for(i = 0; i<workhours; i++) {
-//         $("#timeblock").append($());
-//     };
-// }
 });
