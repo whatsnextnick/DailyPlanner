@@ -25,7 +25,7 @@ $(document).ready(() => {
 
   const currentTime = moment().hour();
   console.log(currentTime);
-  console.log(parseInt($("#2").attr("id")));
+  console.log(parseInt($("#3").attr("id")));
 
   var hour8 = parseInt($("#3").attr("id"));
   var hour9 = parseInt($("#9").attr("id"));
@@ -40,9 +40,13 @@ $(document).ready(() => {
 
   var workhours = [hour8, hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17];
 
-  for(i=0; i<workhours.length(); i++){
-    if (i == currentTime){
-      
+  //add the design based on blocks relation to current time
+  colorcord(workhours);
+  function colorcord(timearr){
+    for(i=0; i<workhours.length; i++){
+      if (timearr[i] === currentTime){
+        $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("present");
+      }
     }
   }
   // function colorcord(timearr){
