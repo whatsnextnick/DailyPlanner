@@ -26,8 +26,8 @@ $(document).ready(() => {
   const currentTime = moment().hour();
   console.log(currentTime);
   console.log(parseInt($("#3").attr("id")));
-
-  var hour8 = parseInt($("#3").attr("id"));
+  
+  var hour8 = parseInt($("#8").attr("id"));
   var hour9 = parseInt($("#9").attr("id"));
   var hour10 = parseInt($("#10").attr("id"));
   var hour11 = parseInt($("#11").attr("id"));
@@ -46,6 +46,10 @@ $(document).ready(() => {
     for(i=0; i<workhours.length; i++){
       if (timearr[i] === currentTime){
         $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("present");
+      } else if (timearr[i] < currentTime){
+        $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("past");
+      } else if (timearr[i] > currentTime){
+        $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("future");
       }
     }
   }
@@ -65,15 +69,15 @@ $(document).ready(() => {
     var input10 = $("#input10").val();
     var input11 = $("#input11").val();
     var input12 = $("#input12").val();
-    var input13 = $("#input1").val();
+    var input13 = $("#input13").val();
     var input14 = $("#input14").val();
     var input15 = $("#input15").val();
-    var input16 = $("#input4").val();
-    var input17 = $("#input5").val();
+    var input16 = $("#input16").val();
+    var input17 = $("#input17").val();
 
     //store all each to-do var in obj
     var workday = [input8, input9, input10, input11, input12,
-    input13, input4, input15, input16, input17];
+    input13, input14, input15, input16, input17];
 
     //save data to localStorage
     localStorage.setItem("workday", JSON.stringify(workday));
