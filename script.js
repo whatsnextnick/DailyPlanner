@@ -9,7 +9,7 @@ $(document).ready(() => {
   
   //Grab the data from localStorage
   var workday = JSON.parse(localStorage.getItem("workday"));
-  console.log(workday);
+  // console.log(workday);
 
   //Display localStorage data to frontend
   $("#input8").attr("placeholder", workday[0]);
