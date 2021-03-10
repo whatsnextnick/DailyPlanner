@@ -8,51 +8,56 @@ $(document).ready(() => {
   $("#currentDay").text(date);
   
   //Grab the data from localStorage
-  var workday = JSON.parse(localStorage.getItem("workday"));
-  // console.log(workday);
+  if (localStorage.getItem("workday") != null) {
+    var workday = JSON.parse(localStorage.getItem("workday"));
 
-  //Display localStorage data to frontend
-  $("#input8").attr("placeholder", workday[0]);
-  $("#input9").attr("placeholder", workday[1]);
-  $("#input10").attr("placeholder", workday[2]);
-  $("#input11").attr("placeholder", workday[3]);
-  $("#input12").attr("placeholder", workday[4]);
-  $("#input13").attr("placeholder", workday[5]);
-  $("#input14").attr("placeholder", workday[6]);
-  $("#input15").attr("placeholder", workday[7]);
-  $("#input16").attr("placeholder", workday[8]);
-  $("#input17").attr("placeholder", workday[9]);
+    console.log(workday);
 
-  const currentTime = moment().hour();
-  console.log(currentTime);
-  console.log(parseInt($("#3").attr("id")));
+    //Display localStorage data to frontend
+    $("#input8").attr("placeholder", workday[0]);
+    $("#input9").attr("placeholder", workday[1]);
+    $("#input10").attr("placeholder", workday[2]);
+    $("#input11").attr("placeholder", workday[3]);
+    $("#input12").attr("placeholder", workday[4]);
+    $("#input13").attr("placeholder", workday[5]);
+    $("#input14").attr("placeholder", workday[6]);
+    $("#input15").attr("placeholder", workday[7]);
+    $("#input16").attr("placeholder", workday[8]);
+    $("#input17").attr("placeholder", workday[9]);
   
-  var hour8 = parseInt($("#8").attr("id"));
-  var hour9 = parseInt($("#9").attr("id"));
-  var hour10 = parseInt($("#10").attr("id"));
-  var hour11 = parseInt($("#11").attr("id"));
-  var hour12 = parseInt($("#12").attr("id"));
-  var hour13 = parseInt($("#13").attr("id"));
-  var hour14 = parseInt($("#14").attr("id"));
-  var hour15 = parseInt($("#15").attr("id"));
-  var hour16 = parseInt($("#16").attr("id"));
-  var hour17 = parseInt($("#17").attr("id"));
-
-  var workhours = [hour8, hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17];
-
-  //add the design based on blocks relation to current time
-  colorcord(workhours);
-  function colorcord(timearr){
-    for(i=0; i<workhours.length; i++){
-      if (timearr[i] === currentTime){
-        $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("present");
-      } else if (timearr[i] < currentTime){
-        $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("past");
-      } else if (timearr[i] > currentTime){
-        $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("future");
+    const currentTime = moment().hour();
+    console.log(currentTime);
+    console.log(parseInt($("#3").attr("id")));
+    
+    var hour8 = parseInt($("#8").attr("id"));
+    var hour9 = parseInt($("#9").attr("id"));
+    var hour10 = parseInt($("#10").attr("id"));
+    var hour11 = parseInt($("#11").attr("id"));
+    var hour12 = parseInt($("#12").attr("id"));
+    var hour13 = parseInt($("#13").attr("id"));
+    var hour14 = parseInt($("#14").attr("id"));
+    var hour15 = parseInt($("#15").attr("id"));
+    var hour16 = parseInt($("#16").attr("id"));
+    var hour17 = parseInt($("#17").attr("id"));
+  
+    var workhours = [hour8, hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17];
+  
+      //add the design based on blocks relation to current time
+    colorcord(workhours);
+    function colorcord(timearr){
+      for(i=0; i<workhours.length; i++){
+        if (timearr[i] === currentTime){
+          $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("present");
+        } else if (timearr[i] < currentTime){
+          $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("past");
+        } else if (timearr[i] > currentTime){
+          $("#"+ timearr[i].toString()).siblings(".input-group-text").addClass("future");
+        }
       }
     }
-  }
+  };
+
+
   // function colorcord(timearr){
   //   for (i=0; i<workday; i++) {
   //     if (timearr[i].val().isSame(date, "hour")){
